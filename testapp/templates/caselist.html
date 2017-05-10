@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+
+<html lang="en-us" >
+<head>
+<title>Select 用例 to change | Django site admin</title>
+<link rel="stylesheet" type="text/css" href="/static/css/base.css" />
+
+
+  <link rel="stylesheet" type="text/css" href="/static/css/changelists.css" />
+
+
+    <script type="text/javascript" src="/admin/jsi18n/"></script>
+
+
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
+<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
+<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+<script type="text/javascript" src="/static/js/editor/kindeditor/kindeditor-all.js"></script>
+<script type="text/javascript" src="/static/js/editor/kindeditor/lang.zh_CN.js"></script>
+<script type="text/javascript" src="/static/js/editor/kindeditor/config.js"></script>
+
+<meta name="robots" content="NONE,NOARCHIVE" />
+</head>
+
+
+<body class=" app-testapp model-case change-list"
+  data-admin-utc-offset="28800">
+
+<!-- Container -->
+<div id="container">
+
+
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+
+<h1 id="site-name"><a href="/admin/">Django administration</a></h1>
+
+        </div>
+
+
+        <div id="user-tools">
+
+                Welcome,
+                <strong>admin</strong>.
+
+
+
+
+
+
+
+                <a href="/admin/logout/">Log out</a>
+
+        </div>
+
+
+
+    </div>
+    <!-- END Header -->
+
+<div class="breadcrumbs">
+<a href="/admin/">Home</a>
+&rsaquo; <a href="/admin/testapp/">Testapp</a>
+&rsaquo; 测试用例
+</div>
+
+
+
+
+
+
+
+    <!-- Content -->
+    <div id="content" class="flex">
+
+        <h1>Select 用例 to change</h1>
+
+  <div id="content-main">
+
+        <ul class="object-tools">
+
+
+            <li>
+
+              <a href="/admin/testapp/case/add/" class="addlink">
+                Add 用例
+              </a>
+            </li>
+
+
+        </ul>
+
+
+    <div class="module" id="changelist">
+
+
+
+
+
+
+
+
+
+
+      <form id="changelist-form" method="post" novalidate><input type='hidden' name='csrfmiddlewaretoken' value='Xh211VxpKt4LbQVpZ4BVPIF6bGjJIjuwPFrOPl3R12EwI2AvskhRAbP7gajzYEWp' />
+
+
+
+
+<div class="actions">
+    <label>Action: <select name="action" required>
+<option value="" selected="selected">---------</option>
+<option value="delete_selected">Delete selected 测试用例</option>
+</select></label><input class="select-across" name="select_across" type="hidden" value="0" />
+    <button type="submit" class="button" title="Run the selected action" name="index" value="0">Go</button>
+
+        <span class="action-counter" data-actions-icnt="40">0 of {{ len }} selected</span>
+
+</div>
+<div class="results">
+<table id="result_list">
+<thead>
+<tr>
+
+<th scope="col"  class="action-checkbox-column">
+
+   <div class="text"><span><input type="checkbox" id="action-toggle" /></span></div>
+   <div class="clear"></div>
+</th>
+<th scope="col"  class="sortable column-title">
+
+
+
+   <div class="text"><a href="?o=1">标题</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col"  class="sortable column-prd_name">
+
+
+
+   <div class="text"><a href="?o=2">所属需求</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col"  class="sortable column-module">
+
+
+
+   <div class="text"><a href="?o=3">模块</a></div>
+   <div class="clear"></div>
+</th>
+</tr>
+</thead>
+<tbody>
+
+{% for case in case_list %}
+
+<tr class="row1">
+    <td class="action-checkbox"><input class="action-select" name="_selected_action" type="checkbox" value={{ case.id }} /></td>
+    <th class="field-title"><a href="{% url 'case_detail' case.id %}">{{ case.title }}</a></th>
+    <td class="field-prd_name nowrap">{{ case.prd_name }}</td>
+    <td class="field-module">{{ case.module }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+
+
+
+
+
+
+<p class="paginator">{{ len }} 测试用例</p>
+
+      </form>
+    </div>
+  </div>
+
+
+        <br class="clear" />
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+</div>
+<!-- END Container -->
+
+</body>
+</html>

@@ -64,12 +64,26 @@ def get_prd_list(request):
     prd_list=Prd.objects.all()
     return render(request,'prdlist.html',{'prd_list':prd_list,'len':len(prd_list)})
 
+def get_article_list(request,author):
+    author_id = User.objects.filter(username=author)[0].id
+    article_list = Article.objects.filter(author_id=author_id).order_by('id')
+    return  render(request,'articlelist.html',{'article_list':article_list,'len':len(article_list)})
+
+
 def case_detail(request,case_id):
+    try:
+        case = Case.objects.get(id=case_id)
+        id = Prd.objects.filter(id=case.prd_name_id)[0].id
+        return render(request, 'casedetail.html', {'case': case,'id':id})
+    except Case.DoesNotExist:
+        raise Http404
+
+def change_case(request,case_id):
     if len(request.POST)==0:
         try:
             case = Case.objects.get(id=case_id)
             name = Prd.objects.filter(id=case.prd_name_id)[0].name
-            return render(request, 'casedetail.html', {'case': case, 'name': name})
+            return render(request, 'changecase.html', {'case': case, 'name': name})
         except Case.DoesNotExist:
             raise Http404
     else:
@@ -79,11 +93,11 @@ def case_detail(request,case_id):
         Case.objects.filter(id=case_id).update(module=module,title=title,content=content)
         return HttpResponse('更新成功')
 
-def prd_detail(request,prd_id):
+def change_prd(request,prd_id):
     if len(request.POST)==0:
         try:
             prd = Case.objects.get(id=prd_id)
-            return render(request, 'prddetail.html', {'prd':prd})
+            return render(request, 'changeprd.html', {'prd':prd})
         except Case.DoesNotExist:
             raise Http404
     else:
@@ -92,3 +106,22 @@ def prd_detail(request,prd_id):
         Prd.objects.filter(id=prd_id).update(name=name,prd_url=prd_url)
         return HttpResponse('更新成功')
 
+def article_detail(request,article_id):
+    try:
+        article = Article.objects.get(id=article_id)
+        return render(request, 'articledetail.html', {'article': article})
+    except Case.DoesNotExist:
+        raise Http404
+def change_article(request,article_id):
+    if len(request.POST)==0:
+        try:
+            article = Article.objects.get(id=article_id)
+            return render(request, 'changearticle.html', {'article':article})
+        except Case.DoesNotExist:
+            raise Http404
+    else:
+        title = request.POST['title']
+        keyword = request.POST['keyword']
+        content = request.POST['content']
+        Prd.objects.filter(id=article_id).update(title=title,keyword=keyword,content=content)
+        return HttpResponse('更新成功')

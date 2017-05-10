@@ -2,7 +2,7 @@
 
 <html lang="en-us" >
 <head>
-<title>用例 | 测试平台</title>
+<title>Change 用例 | 测试平台</title>
 <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
 <link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
 
@@ -51,54 +51,71 @@
 </div>
     <!-- Content -->
     <div id="content" class="colM">
-        <br>
-        <br>
-        <br>
+
+        <h1>Change 用例</h1>
         <div id="content-main">
-<br>
+
   <ul class="object-tools">
-    <li><a href="/testapp/prd/{{ id }}/case" class="viewsitelink">case列表</a></li>
+
+    <li>
+        <a href="/admin/testapp/case/40/history/" class="historylink">History</a>
+    </li>
+    <li><a href="/admin/r/9/40/" class="viewsitelink">View on site</a></li>
+
   </ul>
-<div  id="case_form" novalidate>
+<form enctype="multipart/form-data" action="" method="post" id="case_form" novalidate>{% csrf_token %}
+<div>
   <fieldset class="module aligned ">
         <div class="form-row field-prd_name">
                 <div>
-                        <label class="required" for="id_prd_name">标题:</label>
+                        <label class="required" for="id_prd_name">需求:</label>
 <div class="related-widget-wrapper">
-    <p>{{ case.title }}</p>
+    <p>{{ name }}</p>
 
 </div>
                 </div>
         </div>
         <div class="form-row field-module">
                 <div>
+
                         <label class="required" for="id_module">模块:</label>
-                    <p>{{ case.module }}</p>
+
+                            <input class="vTextField" id="id_module" maxlength="256" name="module" type="text" value={{ case.module }} required />
                 </div>
+
         </div>
 
         <div class="form-row field-title">
+
                 <div>
-                        <label class="required" for="id_title">所属需求:</label>
-                    <p>{{ case.prd_name }}</p>
+
+                        <label class="required" for="id_title">标题:</label>
+
+                            <input class="vTextField" id="id_title" maxlength="256" name="title" type="text" value={{ case.title }} required />
+
                 </div>
+
         </div>
+
         <div class="form-row field-content">
+
                 <div>
-                        <label class="required" for="id_content">操作步骤:</label>
-                    <p>{{ case.content }}</p>
+
+                        <label for="id_content">内容:</label>
+
+                            <textarea class="vLargeTextField" cols="40" id="id_content" name="content" rows="10">{{ case.content }}</textarea>
+
                 </div>
 
         </div>
 
 </fieldset>
-</div>
-
 <div class="submit-row">
-<p class="default" ><a href="change">Change</a></p>
+<input type="submit" value="Save" class="default" name="_save" />
     <p class="deletelink-box"><a href="/admin/testapp/case/40/delete/" class="deletelink">Delete</a></p>
+<input type="submit" value="Save and add another" name="_addanother" />
+<input type="submit" value="Save and continue editing" name="_continue" />
 </div>
-
     <script type="text/javascript"
             id="django-admin-form-add-constants"
             src="/static/admin/js/change_form.js"
@@ -110,14 +127,12 @@
         data-prepopulated-fields="[]">
 </script>
 </div>
-</div></div>
+</form></div>
         <br class="clear" />
     </div>
     <!-- END Content -->
-
     <div id="footer"></div>
 </div>
 <!-- END Container -->
-
 </body>
 </html>

@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="en-us" >
 <head>
-<title>用例 | 测试平台</title>
+<title>文章详情 | 测试平台</title>
 <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
 <link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
-
 <script type="text/javascript" src="/admin/jsi18n/"></script>
 <script type="text/javascript" src="/static/admin/js/core.js"></script>
 <script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
@@ -18,18 +16,15 @@
 <script type="text/javascript" src="/static/js/editor/kindeditor/kindeditor-all.js"></script>
 <script type="text/javascript" src="/static/js/editor/kindeditor/lang.zh_CN.js"></script>
 <script type="text/javascript" src="/static/js/editor/kindeditor/config.js"></script>
-
 <meta name="robots" content="NONE,NOARCHIVE" />
 </head>
-
-<body class=" app-testapp model-case change-form"
+<body class=" app-testapp model-article change-form"
   data-admin-utc-offset="0">
 <!-- Container -->
 <div id="container">
     <!-- Header -->
     <div id="header">
         <div id="branding">
-
 <h1 id="site-name"><a href="/admin/">Django administration</a></h1>
         </div>
         <div id="user-tools">
@@ -42,61 +37,52 @@
         </div>
     </div>
     <!-- END Header -->
-
 <div class="breadcrumbs">
 <a href="/admin/">Home</a>
 &rsaquo; <a href="/admin/testapp/">Testapp</a>
-&rsaquo; <a href="/admin/testapp/case/">测试用例</a>
-&rsaquo; {{ case.title }}
+&rsaquo; <a href="/admin/testapp/article/">文章</a>
+&rsaquo; {{ article.title }}
 </div>
     <!-- Content -->
     <div id="content" class="colM">
-        <br>
-        <br>
-        <br>
+        <h1>Change article</h1>
         <div id="content-main">
-<br>
   <ul class="object-tools">
-    <li><a href="/testapp/prd/{{ id }}/case" class="viewsitelink">case列表</a></li>
+    <li>
+        <a href="/admin/testapp/article/2/history/" class="historylink">History</a>
+    </li>
   </ul>
-<div  id="case_form" novalidate>
+<form enctype="multipart/form-data" action="" method="post" id="article_form" novalidate><input type='hidden' name='csrfmiddlewaretoken' value='knlgNNLesMi72lsjUgHvxJmuvwzXHJ0Q50vR9RAN9S01FBTl7IrCqXDLXVVMUWgx' />
+<div>
   <fieldset class="module aligned ">
-        <div class="form-row field-prd_name">
-                <div>
-                        <label class="required" for="id_prd_name">标题:</label>
-<div class="related-widget-wrapper">
-    <p>{{ case.title }}</p>
-
-</div>
-                </div>
-        </div>
-        <div class="form-row field-module">
-                <div>
-                        <label class="required" for="id_module">模块:</label>
-                    <p>{{ case.module }}</p>
-                </div>
-        </div>
-
         <div class="form-row field-title">
                 <div>
-                        <label class="required" for="id_title">所属需求:</label>
-                    <p>{{ case.prd_name }}</p>
+                        <label class="required" for="id_title">文章标题:</label>
+                    <p>{{ article.title }}</p>
+                </div>
+        </div>
+        <div class="form-row field-keyword">
+                <div>
+                        <label class="required" for="id_keyword">关键字:</label>
+                    <p>{{ article.keyword }}</p>
+                </div>
+        </div>
+        <div class="form-row field-author">
+                <div>
+                        <label class="required" for="id_author">作者:</label>
+                    <p>{{ article.author }}</p>
                 </div>
         </div>
         <div class="form-row field-content">
                 <div>
-                        <label class="required" for="id_content">操作步骤:</label>
-                    <p>{{ case.content }}</p>
+                        <label class="required" for="id_content">内容:</label>
+                    <p>{{ article.content }}</p>
                 </div>
-
         </div>
-
 </fieldset>
-</div>
-
 <div class="submit-row">
-<p class="default" ><a href="change">Change</a></p>
-    <p class="deletelink-box"><a href="/admin/testapp/case/40/delete/" class="deletelink">Delete</a></p>
+    <p class="default" ><a href="change">Change</a></p>
+    <p class="deletelink-box"><a href="/admin/testapp/article/2/delete/" class="deletelink">Delete</a></p>
 </div>
 
     <script type="text/javascript"
@@ -104,13 +90,14 @@
             src="/static/admin/js/change_form.js"
             >
     </script>
+
 <script type="text/javascript"
         id="django-admin-prepopulated-fields-constants"
         src="/static/admin/js/prepopulate_init.js"
         data-prepopulated-fields="[]">
 </script>
 </div>
-</div></div>
+</form></div>
         <br class="clear" />
     </div>
     <!-- END Content -->
@@ -118,6 +105,5 @@
     <div id="footer"></div>
 </div>
 <!-- END Container -->
-
 </body>
 </html>

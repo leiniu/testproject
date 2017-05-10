@@ -1,64 +1,63 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>测试平台</title>
+<meta name="keywords" content="一米阳光站长资源站">
+<meta name="description" content="一米阳光站长资源站">
+<script type="text/javascript" language="javascript" src="/static/image/jquery-1.js"></script>
+<link rel="stylesheet" href="/static/image/temp.css" type="text/css">
+<script type="text/javascript" src="/static/image/jquery.js"></script>
+<script type="text/javascript" language="javascript">
+    $(function(){
+    $('#taobao_ico').poshytip();
+    $('#hotel_ico').poshytip();
+    $('#travel_ico').poshytip();
+    $('#youxia_ico').poshytip();
+});
 
-<html lang="en-us" >
-<head>
-<title>Change 用例 | 测试平台</title>
-<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
-<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
+    function _load(){
+        var _bodyHeight =parseInt(document.documentElement.clientHeight);
+        var _height = parseInt(document.getElementById("footer").offsetHeight);
+        var _centerHeight = parseInt(document.getElementById("center").offsetHeight);
+        var _contentHeight = _bodyHeight - _centerHeight;
+        if(_contentHeight>_height){
+        document.getElementById('footer').style.height=_contentHeight-27+'px';
+        }
+    }
+    $(window).resize(function(){
+       _load();
+    });
 
-<script type="text/javascript" src="/admin/jsi18n/"></script>
-<script type="text/javascript" src="/static/admin/js/core.js"></script>
-<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
-<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
-<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
-<script type="text/javascript" src="/static/admin/js/actions.js"></script>
-<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
-<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
-<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
-<script type="text/javascript" src="/static/js/editor/kindeditor/kindeditor-all.js"></script>
-<script type="text/javascript" src="/static/js/editor/kindeditor/lang.zh_CN.js"></script>
-<script type="text/javascript" src="/static/js/editor/kindeditor/config.js"></script>
+</script>
+<style id="poshytip-css-tip-yellow" type="text/css">div.tip-yellow{visibility:hidden;position:absolute;top:0;left:0;}div.tip-yellow table, div.tip-yellow td{margin:0;font-family:inherit;font-size:inherit;font-weight:inherit;font-style:inherit;font-variant:inherit;}div.tip-yellow td.tip-bg-image span{display:block;font:1px/1px sans-serif;height:10px;width:10px;overflow:hidden;}div.tip-yellow td.tip-right{background-position:100% 0;}div.tip-yellow td.tip-bottom{background-position:100% 100%;}div.tip-yellow td.tip-left{background-position:0 100%;}div.tip-yellow div.tip-inner{background-position:-10px -10px;}div.tip-yellow div.tip-arrow{visibility:hidden;position:absolute;overflow:hidden;font:1px/1px sans-serif;}
+body{FONT-FAMILY:"Microsoft Yahei","verdana", "Arial","宋体";font-size: 16px; }
+</style></head>
 
-<meta name="robots" content="NONE,NOARCHIVE" />
-</head>
+<body onload="_load()">
+    <div id="center">
+        <div class="ico">
+            <label>
+            <a href="http://www.520ym.net"><img id="taobao_ico" src="/static/image/ptb.jpg" width="130" height="60"></a>
+            <a href="http://www.520ym.net">点此进入</a>
+            </label>
+            <label><a href="http://www.520ym.net"><img id="hotel_ico" src="/static/image/vip.jpg" width="130" height="60"></a>
+            <a href="http://www.520ym.net">点此进入</a>
+            </label>
+            <label>
+            <a href="http://www.520ym.net"><img id="travel_ico" src="/static/image/zgb.jpg" width="130" height="60"></a>
+            <a href="http://www.520ym.net">点此进入</a>
+            </label>
 
-<body class=" app-testapp model-case change-form"
-  data-admin-utc-offset="0">
-<!-- Container -->
-<div id="container">
-    <!-- Header -->
-    <div id="header">
-        <div id="branding">
-
-<h1 id="site-name"><a href="/admin/">Django administration</a></h1>
         </div>
-        <div id="user-tools">
-                Welcome,
-                <strong>admin</strong>.
-                    <a href="/">View site</a> /
-                <a href="/admin/password_change/">Change password</a> /
 
-                <a href="/admin/logout/">Log out</a>
-        </div>
     </div>
-    <!-- END Header -->
-    <!-- Content -->
-    <div id="content" class="colM">
-        <div id="content-main">
-            <table>
-                <tr>
-                    <td>用例管理</td>
-                    <td>新增用例</td>
-                    <td>分享</td>
-                </tr>
-            </table>
+    <div style="height: 50px;" id="footer">
+  <p>乐刷测试组 <br><br>
 
+    </p>
 
-        <br class="clear" />
     </div>
-    <!-- END Content -->
-</div>
-<!-- END Container -->
 
-</body>
-</html>
+
+
+</body></html>

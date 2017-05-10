@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="en-us" >
 <head>
-<title>用例 | 测试平台</title>
+<title>Change 需求名称 | Django site admin</title>
 <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
 <link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
-
 <script type="text/javascript" src="/admin/jsi18n/"></script>
 <script type="text/javascript" src="/static/admin/js/core.js"></script>
 <script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
@@ -15,109 +13,83 @@
 <script type="text/javascript" src="/static/admin/js/urlify.js"></script>
 <script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
 <script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
-<script type="text/javascript" src="/static/js/editor/kindeditor/kindeditor-all.js"></script>
-<script type="text/javascript" src="/static/js/editor/kindeditor/lang.zh_CN.js"></script>
-<script type="text/javascript" src="/static/js/editor/kindeditor/config.js"></script>
-
 <meta name="robots" content="NONE,NOARCHIVE" />
 </head>
-
-<body class=" app-testapp model-case change-form"
-  data-admin-utc-offset="0">
+<body class=" app-testapp model-prd change-form"
+  data-admin-utc-offset="28800">
 <!-- Container -->
 <div id="container">
     <!-- Header -->
     <div id="header">
         <div id="branding">
-
 <h1 id="site-name"><a href="/admin/">Django administration</a></h1>
         </div>
         <div id="user-tools">
-                Welcome,
+            Welcome,
                 <strong>admin</strong>.
                     <a href="/">View site</a> /
                 <a href="/admin/password_change/">Change password</a> /
 
                 <a href="/admin/logout/">Log out</a>
+
         </div>
     </div>
     <!-- END Header -->
-
 <div class="breadcrumbs">
 <a href="/admin/">Home</a>
 &rsaquo; <a href="/admin/testapp/">Testapp</a>
-&rsaquo; <a href="/admin/testapp/case/">测试用例</a>
-&rsaquo; {{ case.title }}
+&rsaquo; <a href="/admin/testapp/prd/">需求名称</a>
+&rsaquo; 好人啊
 </div>
     <!-- Content -->
     <div id="content" class="colM">
-        <br>
-        <br>
-        <br>
+        <h1>Change 需求名称</h1>
         <div id="content-main">
-<br>
   <ul class="object-tools">
-    <li><a href="/testapp/prd/{{ id }}/case" class="viewsitelink">case列表</a></li>
+    <li>
+        <a href="/admin/testapp/prd/5/history/" class="historylink">History</a>
+    </li>
+    <li><a href="/admin/r/10/5/" class="viewsitelink">View on site</a></li>
   </ul>
-<div  id="case_form" novalidate>
+<form enctype="multipart/form-data" action="" method="post" id="prd_form" novalidate><input type='hidden' name='csrfmiddlewaretoken' value='QpYbgvgtP5DPEBSvg6kT1oPdBO1PH26u8kNZfnUnyAzi9KV3O7KRmklIHapcyDeo' />
+<div>
   <fieldset class="module aligned ">
-        <div class="form-row field-prd_name">
+        <div class="form-row field-name">
                 <div>
-                        <label class="required" for="id_prd_name">标题:</label>
-<div class="related-widget-wrapper">
-    <p>{{ case.title }}</p>
-
-</div>
+                        <label class="required" for="id_name">需求名称:</label>
+                            <input class="vTextField" id="id_name" maxlength="256" name="name" type="text" value="好人啊" required />
                 </div>
         </div>
-        <div class="form-row field-module">
+        <div class="form-row field-prd_url">
                 <div>
-                        <label class="required" for="id_module">模块:</label>
-                    <p>{{ case.module }}</p>
+                        <label class="required" for="id_prd_url">需求地址:</label>
+                            <input class="vTextField" id="id_prd_url" maxlength="256" name="prd_url" type="text" value="有大概豆腐干" required />
                 </div>
         </div>
-
-        <div class="form-row field-title">
-                <div>
-                        <label class="required" for="id_title">所属需求:</label>
-                    <p>{{ case.prd_name }}</p>
-                </div>
-        </div>
-        <div class="form-row field-content">
-                <div>
-                        <label class="required" for="id_content">操作步骤:</label>
-                    <p>{{ case.content }}</p>
-                </div>
-
-        </div>
-
 </fieldset>
-</div>
-
 <div class="submit-row">
-<p class="default" ><a href="change">Change</a></p>
-    <p class="deletelink-box"><a href="/admin/testapp/case/40/delete/" class="deletelink">Delete</a></p>
+<input type="submit" value="Save" class="default" name="_save" />
+    <p class="deletelink-box"><a href="/admin/testapp/prd/5/delete/" class="deletelink">Delete</a></p>
+<input type="submit" value="Save and add another" name="_addanother" />
+<input type="submit" value="Save and continue editing" name="_continue" />
 </div>
-
     <script type="text/javascript"
             id="django-admin-form-add-constants"
             src="/static/admin/js/change_form.js"
             >
-    </script>
+    </script
 <script type="text/javascript"
         id="django-admin-prepopulated-fields-constants"
         src="/static/admin/js/prepopulate_init.js"
         data-prepopulated-fields="[]">
 </script>
 </div>
-</div></div>
+</form></div>
         <br class="clear" />
     </div>
     <!-- END Content -->
-
     <div id="footer"></div>
 </div>
 <!-- END Container -->
-
 </body>
 </html>

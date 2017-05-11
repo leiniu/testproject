@@ -2,7 +2,7 @@
 
 <html lang="en-us" >
 <head>
-<title>需求列表 | 测试平台</title>
+<title>搜索结果 | 测试平台</title>
 <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
   <link rel="stylesheet" type="text/css" href="/static/admin/css/changelists.css" />
     <script type="text/javascript" src="/admin/jsi18n/"></script>
@@ -26,24 +26,16 @@
     <div id="header">
         <div id="branding">
 
-<h1 id="site-name"><a href="/admin/">Django administration</a></h1>
+<h1 id="site-name"><a href="/index/">测试平台</a></h1>
         </div>
 
         <div id="user-tools">
                 Welcome,
-                <strong>admin</strong>.
-
-                    <a href="/">View site</a> /
-
-                <a href="/admin/password_change/">Change password</a> /
-
+                <strong>admin</strong>/
                 <a href="/admin/logout/">Log out</a>
-
         </div>
-
     </div>
     <!-- END Header -->
-
 <div class="breadcrumbs">
 <a href="/admin/">Home</a>
 &rsaquo; <a href="/admin/testapp/">Testapp</a>
@@ -51,53 +43,27 @@
 </div>
 
     <!-- Content -->
-    <div id="content" class="flex">
-
-        <h1>Select 需求名称 to change</h1>
-
-  <div id="content-main">
-
-        <ul class="object-tools">
-
-            <li>
-              <a href="/testapp/prd/add/" class="addlink">
-                Add 需求名称
-              </a>
-            </li>
-
-        </ul>
-
-    <div class="module" id="changelist">
-<div class="actions">
-    <label>Action: <select name="action" required>
-<option value="" selected="selected">---------</option>
-<option value="delete_selected">Delete selected 需求名称</option>
-</select></label><input class="select-across" name="select_across" type="hidden" value="0" />
-    <button type="submit" class="button" title="Run the selected action" name="index" value="0">Go</button>
-
-        <span class="action-counter" data-actions-icnt="5">0 of {{ len }} selected</span>
-
+<div id="content" class="flex">
+<div >
+    <form action="/testapp/search" method="post">
+        <input type="text" value="输入搜索关键字..." name="keyword">
+        <input type="submit" value="搜索">
+    </form>
 </div>
+
+<div id="content-main">
+
+<div class="module" id="changelist">
 <div class="results">
 <table id="result_list">
 <thead>
+<p>需求模块</p>
 <tr>
-<th scope="col"  class="sortable column-name">
-   <div class="text"><a href="?o=1">需求名称</a></div>
-   <div class="clear"></div>
-</th>
-<th scope="col"  class="sortable column-prd_url">
-   <div class="text"><a href="?o=2">需求地址</a></div>
-   <div class="clear"></div>
-</th>
-    <th scope="col"  class="sortable column-prd_url">
-   <div class="text"><a href="?o=3"></a></div>
-   <div class="clear"></div>
-</th>
+<th scope="col"  class="sortable column-name">需求名称</th>
+<th scope="col"  class="sortable column-prd_url">需求地址</th>
 </tr>
 </thead>
 <tbody>
-
 {% for prd in prd_list %}
 <tr class="row1">
     <th class="field-name"><a href="{% url 'case_list' prd.id %}">{{ prd.name }}</a></th>
@@ -107,6 +73,27 @@
 {% endfor %}
 </tbody>
 </table>
+
+<table id="result_list">
+<thead>
+<p>分享文章</p>
+<tr>
+<th scope="col"  class="sortable column-name">标题</th>
+<th scope="col"  class="sortable column-prd_url">关键字</th>
+<th scope="col"  class="sortable column-prd_url">作者</th>
+</tr>
+</thead>
+<tbody>
+{% for prd in prd_list %}
+<tr class="row1">
+    <th class="field-name"><a href="{% url 'case_list' prd.id %}">{{ prd.name }}</a></th>
+    <td class="field-prd_url">{{ prd.prd_url }}</td>
+    <td><a href="{% url 'change_prd' prd.id %}"><img src="/static/image/paper.png" width="16px" height="18px"></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
 </div>
     </div>
   </div>

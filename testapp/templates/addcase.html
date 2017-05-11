@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="en-us" >
 <head>
 <title>Add 用例 | 测试平台</title>
 <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
 <link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
-
-
 <script type="text/javascript" src="/admin/jsi18n/"></script>
 <script type="text/javascript" src="/static/admin/js/core.js"></script>
 <script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
@@ -19,89 +16,45 @@
 <script type="text/javascript" src="/static/js/editor/kindeditor/kindeditor-all.js"></script>
 <script type="text/javascript" src="/static/js/editor/kindeditor/lang.zh_CN.js"></script>
 <script type="text/javascript" src="/static/js/editor/kindeditor/config.js"></script>
-
 <meta name="robots" content="NONE,NOARCHIVE" />
 </head>
-
-
 <body class=" app-testapp model-case change-form"
   data-admin-utc-offset="0">
-
 <!-- Container -->
 <div id="container">
-
-
     <!-- Header -->
     <div id="header">
         <div id="branding">
 
 <h1 id="site-name"><a href="/admin/">测试平台</a></h1>
-
         </div>
-
-
         <div id="user-tools">
-
-                Welcome,
+            Welcome,
                 <strong>admin</strong>.
-
-
-
-                    <a href="/">View site</a> /
-
-
-
-
-
-
+                   <a href="/">View site</a> /
                 <a href="/admin/password_change/">Change password</a> /
 
                 <a href="/admin/logout/">Log out</a>
 
         </div>
-
-
-
     </div>
     <!-- END Header -->
-
 <div class="breadcrumbs">
 <a href="/admin/">Home</a>
 &rsaquo; <a href="/admin/testapp/">Testapp</a>
 &rsaquo; <a href="/admin/testapp/case/">测试用例</a>
 &rsaquo; Add 用例
 </div>
-
     <!-- Content -->
     <div id="content" class="colM">
-
         <h1>Add 用例</h1>
         <div id="content-main">
-
-
-
 <form enctype="multipart/form-data" action="" method="post" id="case_form" novalidate>{% csrf_token %}
 <div>
-
-
-
-
-
-
-
   <fieldset class="module aligned ">
-
-
-
         <div class="form-row field-prd_name">
-
-
                 <div>
-
-
                         <label class="required" for="id_prd_name">需求:</label>
-
-
 <div class="related-widget-wrapper">
     <select id="id_prd_name" name="prd_name" required>
 <option value="" selected="selected">---------</option>
@@ -109,131 +62,59 @@
 <option value={{prd.id}}>{{ prd.name }}</option>
 {% endfor %}
 </select>
-
-
         <a class="related-widget-wrapper-link change-related" id="change_id_prd_name"
             data-href-template="/admin/testapp/prd/__fk__/change/?_to_field=id&amp;_popup=1"
             title="Change selected 需求名称">
             <img src="/static/admin/img/icon-changelink.svg" alt="Change"/>
         </a>
-
-
         <a class="related-widget-wrapper-link add-related" id="add_id_prd_name"
-            href="/admin/testapp/prd/add/?_to_field=id&amp;_popup=1"
+            href="/testapp/prd/add/?_to_field=id&amp;_popup=1"
             title="Add another 需求名称">
             <img src="/static/admin/img/icon-addlink.svg" alt="Add"/>
         </a>
-
-
-
 </div>
-
-
-
-
                 </div>
-
         </div>
-
         <div class="form-row field-module">
-
-
                 <div>
-
-
                         <label class="required" for="id_module">模块:</label>
-
                             <input class="vTextField" id="id_module" maxlength="256" name="module" type="text" required />
-
-
-
                 </div>
-
         </div>
-
         <div class="form-row field-title">
-
-
                 <div>
-
-
                         <label class="required" for="id_title">标题:</label>
-
                             <input class="vTextField" id="id_title" maxlength="256" name="title" type="text" required />
-
-
-
                 </div>
-
         </div>
-
         <div class="form-row field-content">
-
-
                 <div>
-
-
                         <label for="id_content">内容:</label>
-
-                            <textarea class="vLargeTextField" cols="40" id="id_content" name="content" rows="10">
-</textarea>
-
-
-
+                            <textarea class="vLargeTextField" cols="40" id="id_content" name="content" rows="10" value="我是好人"></textarea>
                 </div>
-
         </div>
-
 </fieldset>
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="submit-row">
 <input type="submit" value="Save" class="default" name="_save" />
-
-
 <input type="submit" value="Save and add another" name="_addanother" />
 <input type="submit" value="Save and continue editing" name="_continue" />
 </div>
-
-
-
     <script type="text/javascript"
             id="django-admin-form-add-constants"
             src="/static/admin/js/change_form.js"
-
                 data-model-name="case"
             >
     </script>
-
-
-
-
 <script type="text/javascript"
         id="django-admin-prepopulated-fields-constants"
         src="/static/admin/js/prepopulate_init.js"
         data-prepopulated-fields="[]">
 </script>
-
-
 </div>
 </form></div>
-
-
         <br class="clear" />
     </div>
     <!-- END Content -->
-
     <div id="footer"></div>
 </div>
 <!-- END Container -->

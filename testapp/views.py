@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 from testapp.models import *
@@ -17,6 +18,7 @@ def login(request):
     else:
         m = u[0]
         if m.password == request.POST['password']:
+            request.session['user_id'] = m.id
             request.session['username'] = request.POST['username']
             return HttpResponse("You're logged in.")
         else:
@@ -53,6 +55,20 @@ def addprd(request):
             return HttpResponse('创建成功')
         except Exception as e:
             return HttpResponse('创建失败')
+def addarticle(request):
+    if len(request.POST) == 0:
+        return render(request,'addarticle.html')
+    else:
+        req = request.POST
+        title = req['title']
+        keyword = req['keyword']
+        content = req['content']
+        author_id = User.objects.filter(username='leiniu')[0].id
+        try:
+            Article.objects.create(title=title, keyword=keyword,content=content,author_id=author_id)
+            return HttpResponse('创建成功')
+        except Exception as e:
+            return HttpResponse('创建失败')
 
 def get_list(request):
     return render(request,'case-list.html')
@@ -64,7 +80,11 @@ def get_prd_list(request):
     prd_list=Prd.objects.all()
     return render(request,'prdlist.html',{'prd_list':prd_list,'len':len(prd_list)})
 
-def get_article_list(request,author):
+def get_article_list(request):
+    article_list=Article.objects.all()
+    return render(request,'articlelist.html',{'article_list':article_list,'len':len(article_list)})
+
+def get_personal_article_list(request,author):
     author_id = User.objects.filter(username=author)[0].id
     article_list = Article.objects.filter(author_id=author_id).order_by('id')
     return  render(request,'articlelist.html',{'article_list':article_list,'len':len(article_list)})
@@ -96,7 +116,7 @@ def change_case(request,case_id):
 def change_prd(request,prd_id):
     if len(request.POST)==0:
         try:
-            prd = Case.objects.get(id=prd_id)
+            prd = Prd.objects.get(id=prd_id)
             return render(request, 'changeprd.html', {'prd':prd})
         except Case.DoesNotExist:
             raise Http404
@@ -125,3 +145,15 @@ def change_article(request,article_id):
         content = request.POST['content']
         Prd.objects.filter(id=article_id).update(title=title,keyword=keyword,content=content)
         return HttpResponse('更新成功')
+
+def search(request):
+    keyword = request.POST['keyword']
+    prd_result=Prd.objects.filter(name__contains=keyword)
+    article_title_result = Article.objects.filter(title__contains=keyword)
+    #print (type(article_title_result))
+    #article_keyword_result = Article.objects.filter(keyword__contains=keyword)
+    #article_result = list(set(article_title_result+article_keyword_result))
+    return render(request,'result.html',{'prd_result':prd_result,'article_result':article_title_result})
+
+
+

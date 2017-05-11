@@ -45,11 +45,11 @@
 </div>
     <!-- Content -->
     <div id="content" class="colM">
-        <h1>Change article</h1>
+        <h1>文章详情</h1>
         <div id="content-main">
   <ul class="object-tools">
     <li>
-        <a href="/admin/testapp/article/2/history/" class="historylink">History</a>
+        <a href="/testapp/{{ article.author }}/" class="historylink">Article list</a>
     </li>
   </ul>
 <form enctype="multipart/form-data" action="" method="post" id="article_form" novalidate><input type='hidden' name='csrfmiddlewaretoken' value='knlgNNLesMi72lsjUgHvxJmuvwzXHJ0Q50vR9RAN9S01FBTl7IrCqXDLXVVMUWgx' />
@@ -76,7 +76,7 @@
         <div class="form-row field-content">
                 <div>
                         <label class="required" for="id_content">内容:</label>
-                    <p>{{ article.content }}</p>
+                    <p>{{ article.content|safe }}</p>
                 </div>
         </div>
 </fieldset>

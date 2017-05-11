@@ -86,9 +86,8 @@
         <div class="form-row field-content">
                 <div>
                         <label class="required" for="id_content">操作步骤:</label>
-                    <p>{{ case.content }}</p>
+                    <p>{{ case.content|safe }}</p>
                 </div>
-
         </div>
 
 </fieldset>

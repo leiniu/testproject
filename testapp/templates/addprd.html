@@ -3,9 +3,8 @@
 <html lang="en-us" >
 <head>
 <title>Add 需求 | 测试平台</title>
-<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
-<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
-
+<link rel="stylesheet" type="text/css" href="/static/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/forms.css" />
 <script type="text/javascript" src="/admin/jsi18n/"></script>
 <script type="text/javascript" src="/static/admin/js/core.js"></script>
 <script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
@@ -21,7 +20,6 @@
 
 <body class=" app-testapp model-prd change-form"
   data-admin-utc-offset="0">
-
 <!-- Container -->
 <div id="container">
 
@@ -29,19 +27,13 @@
     <div id="header">
         <div id="branding">
 
-<h1 id="site-name"><a href="/admin/">Django administration</a></h1>
+<h1 id="site-name"><a href="/index/">测试平台</a></h1>
         </div>
 
         <div id="user-tools">
             Welcome,
                 <strong>admin</strong>.
-
-                    <a href="/">View site</a> /
-
-                <a href="/admin/password_change/">Change password</a> /
-
                 <a href="/admin/logout/">Log out</a>
-
         </div>
 
     </div>
@@ -67,7 +59,7 @@
         <div class="form-row field-name">
                 <div>
                         <label class="required" for="id_name">需求名称:</label>
-                            <input class="vTextField" id="id_name" maxlength="256" name="name" type="text" required />
+                            <input class="vTextField" id="id_name" maxlength="256" name="name" type="text" required="required" />
                 </div>
 
         </div>
@@ -76,8 +68,7 @@
                 <div>
                         <label class="required" for="id_prd_url">需求地址:</label>
 
-                            <input class="vTextField" id="id_prd_url" maxlength="256" name="prd_url" type="text" required />
-
+                            <input class="vTextField" id="id_prd_url" maxlength="256" name="prd_url" type="text" required="required"/>
                 </div>
 
         </div>
@@ -86,10 +77,9 @@
 
 <div class="submit-row">
 <input type="submit" value="Save" class="default" name="_save" />
-
-
+  <p class="deletelink-box"><input type="reset" value="Reset"/></p>
 <input type="submit" value="Save and add another" name="_addanother" />
-<input type="submit" value="Save and continue editing" name="_continue" />
+
 </div>
 
     <script type="text/javascript"

@@ -3,15 +3,10 @@
 <html lang="en-us" >
 <head>
 <title>Log in | 测试平台</title>
-<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
-<link rel="stylesheet" type="text/css" href="/static/admin/css/login.css" />
-
-
-
-
+<link rel="stylesheet" type="text/css" href="/static/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/login.css" />
 <meta name="robots" content="NONE,NOARCHIVE" />
 </head>
-
 
 <body class=" login"
   data-admin-utc-offset="0">
@@ -32,20 +27,11 @@
     </div>
     <!-- END Header -->
 
-
-
-
-
-
-
     <!-- Content -->
     <div id="content" class="colM">
 
-
 <div id="content-main">
-
-
-<form action="testapp/login" method="post" id="login-form">{% csrf_token %}
+<form action="login" method="post" id="login-form">{% csrf_token %}
   <div class="form-row">
 
     <label class="required" for="id_username">Username:</label> <input autofocus="" id="id_username" maxlength="254" name="username" type="text" value="leiniu" required />

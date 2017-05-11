@@ -2,8 +2,8 @@
 <html lang="en-us" >
 <head>
 <title>文章详情 | 测试平台</title>
-<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
-<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/forms.css" />
 <script type="text/javascript" src="/admin/jsi18n/"></script>
 <script type="text/javascript" src="/static/admin/js/core.js"></script>
 <script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
@@ -25,13 +25,11 @@
     <!-- Header -->
     <div id="header">
         <div id="branding">
-<h1 id="site-name"><a href="/admin/">Django administration</a></h1>
+<h1 id="site-name"><a href="/index/">测试平台</a></h1>
         </div>
         <div id="user-tools">
                 Welcome,
                 <strong>admin</strong>.
-                    <a href="/">View site</a> /
-                <a href="/admin/password_change/">Change password</a> /
 
                 <a href="/admin/logout/">Log out</a>
         </div>
@@ -49,15 +47,15 @@
         <div id="content-main">
   <ul class="object-tools">
     <li>
-        <a href="/testapp/{{ article.author }}/" class="historylink">Article list</a>
+        <a href="/testapp/{{ article.author }}/" class="viewsitelink">Article list</a>
     </li>
   </ul>
-<form enctype="multipart/form-data" action="" method="post" id="article_form" novalidate><input type='hidden' name='csrfmiddlewaretoken' value='knlgNNLesMi72lsjUgHvxJmuvwzXHJ0Q50vR9RAN9S01FBTl7IrCqXDLXVVMUWgx' />
+<div id="article_form" >
 <div>
   <fieldset class="module aligned ">
         <div class="form-row field-title">
                 <div>
-                        <label class="required" for="id_title">文章标题:</label>
+                        <label class="required" for="id_title">标题:</label>
                     <p>{{ article.title }}</p>
                 </div>
         </div>
@@ -75,13 +73,13 @@
         </div>
         <div class="form-row field-content">
                 <div>
-                        <label class="required" for="id_content">内容:</label>
+                        <label class="required" for="id_content">内容:</label><br><br>
                     <p>{{ article.content|safe }}</p>
                 </div>
         </div>
 </fieldset>
 <div class="submit-row">
-    <p class="default" ><a href="change">Change</a></p>
+    <p ><a href="change">Change</a></p>
     <p class="deletelink-box"><a href="/admin/testapp/article/2/delete/" class="deletelink">Delete</a></p>
 </div>
 
@@ -97,7 +95,7 @@
         data-prepopulated-fields="[]">
 </script>
 </div>
-</form></div>
+</div></div>
         <br class="clear" />
     </div>
     <!-- END Content -->

@@ -20,8 +20,9 @@ from testapp.views import *
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^index/$', index),
-    url(r'^testapp/login', login),
-    url(r'^testapp/(\d+)/case$', get_case_list,name='case_list'),
+    url(r'^test/$', login_html),
+    url(r'^test/login', login),
+    url(r'^testapp/(\d+)/case/$', get_case_list,name='case_list'),
     url(r'^testapp/prd$', get_prd_list),
     url(r'^testapp/article/all/$', get_article_list),
     url(r'^testapp/article/personal/(\D+)$', get_personal_article_list),

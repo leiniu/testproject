@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-
-# Create your views here.
 from testapp.models import *
 from django.http import Http404
 
@@ -67,6 +66,7 @@ def addarticle(request):
         try:
             Article.objects.create(title=title, keyword=keyword,content=content,author_id=author_id)
             return HttpResponse('创建成功')
+            #messages.add_message(request,messages.SUCCESS,'创建成功！')
         except Exception as e:
             return HttpResponse('创建失败')
 
@@ -88,7 +88,6 @@ def get_personal_article_list(request,author):
     author_id = User.objects.filter(username=author)[0].id
     article_list = Article.objects.filter(author_id=author_id).order_by('id')
     return  render(request,'articlelist.html',{'article_list':article_list,'len':len(article_list)})
-
 
 def case_detail(request,case_id):
     try:

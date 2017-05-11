@@ -2,8 +2,8 @@
 <html lang="en-us" >
 <head>
 <title>Add 用例 | 测试平台</title>
-<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
-<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/forms.css" />
 <script type="text/javascript" src="/admin/jsi18n/"></script>
 <script type="text/javascript" src="/static/admin/js/core.js"></script>
 <script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
@@ -26,16 +26,12 @@
     <div id="header">
         <div id="branding">
 
-<h1 id="site-name"><a href="/admin/">测试平台</a></h1>
+<h1 id="site-name"><a href="/index/">测试平台</a></h1>
         </div>
         <div id="user-tools">
             Welcome,
                 <strong>admin</strong>.
-                   <a href="/">View site</a> /
-                <a href="/admin/password_change/">Change password</a> /
-
                 <a href="/admin/logout/">Log out</a>
-
         </div>
     </div>
     <!-- END Header -->
@@ -56,7 +52,7 @@
                 <div>
                         <label class="required" for="id_prd_name">需求:</label>
 <div class="related-widget-wrapper">
-    <select id="id_prd_name" name="prd_name" required>
+    <select id="id_prd_name" name="prd_name" required="required">
 <option value="" selected="selected">---------</option>
 {% for prd in prd_lists %}
 <option value={{prd.id}}>{{ prd.name }}</option>
@@ -78,13 +74,13 @@
         <div class="form-row field-module">
                 <div>
                         <label class="required" for="id_module">模块:</label>
-                            <input class="vTextField" id="id_module" maxlength="256" name="module" type="text" required />
+                            <input class="vTextField" id="id_module" maxlength="256" name="module" type="text" required="required" />
                 </div>
         </div>
         <div class="form-row field-title">
                 <div>
                         <label class="required" for="id_title">标题:</label>
-                            <input class="vTextField" id="id_title" maxlength="256" name="title" type="text" required />
+                            <input class="vTextField" id="id_title" maxlength="256" name="title" type="text" required="required" />
                 </div>
         </div>
         <div class="form-row field-content">
@@ -96,8 +92,8 @@
 </fieldset>
 <div class="submit-row">
 <input type="submit" value="Save" class="default" name="_save" />
+    <p class="deletelink-box"><input type="reset" value="Reset"/></p>
 <input type="submit" value="Save and add another" name="_addanother" />
-<input type="submit" value="Save and continue editing" name="_continue" />
 </div>
     <script type="text/javascript"
             id="django-admin-form-add-constants"

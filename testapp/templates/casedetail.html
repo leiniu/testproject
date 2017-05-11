@@ -35,9 +35,6 @@
         <div id="user-tools">
                 Welcome,
                 <strong>admin</strong>.
-                    <a href="/">View site</a> /
-                <a href="/admin/password_change/">Change password</a> /
-
                 <a href="/admin/logout/">Log out</a>
         </div>
     </div>
@@ -53,22 +50,20 @@
     <div id="content" class="colM">
         <br>
         <br>
-        <br>
+
         <div id="content-main">
 <br>
   <ul class="object-tools">
     <li><a href="/testapp/prd/{{ id }}/case" class="viewsitelink">case列表</a></li>
   </ul>
-<div  id="case_form" novalidate>
+<div  id="case_form" >
   <fieldset class="module aligned ">
         <div class="form-row field-prd_name">
                 <div>
                         <label class="required" for="id_prd_name">标题:</label>
-<div class="related-widget-wrapper">
-    <p>{{ case.title }}</p>
+                     <p>{{ case.title }}</p>
+                 </div>
 
-</div>
-                </div>
         </div>
         <div class="form-row field-module">
                 <div>
@@ -85,7 +80,7 @@
         </div>
         <div class="form-row field-content">
                 <div>
-                        <label class="required" for="id_content">操作步骤:</label>
+                        <label class="required" for="id_content">操作步骤:</label><br><br>
                     <p>{{ case.content|safe }}</p>
                 </div>
         </div>

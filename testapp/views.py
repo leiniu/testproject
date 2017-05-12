@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, login, logout
 from testapp.models import *
 from django.http import Http404
 
+def test(request):
+    return render(request,'test.html')
 def index(request):
     return render(request,'index.html')
 
@@ -37,7 +39,7 @@ def addcase(request):
         try:
             p = Prd.objects.filter(id=int(prd_name))[0]
             print(p.name)
-            Case.objects.create(prd_name=p, module=module, title=title, content=content)
+            Case.objects.get_or_create(prd_name=p, module=module, title=title, content=content)
             return HttpResponse('创建成功')
         except Exception as e:
             return HttpResponse('创建失败')
@@ -111,6 +113,19 @@ def change_case(request,case_id):
         content = request.POST['content']
         Case.objects.filter(id=case_id).update(module=module,title=title,content=content)
         return HttpResponse('更新成功')
+def delete_case(request,case_id):
+    try:
+        prd_id = Case.objects.filter(id=case_id)[0].prd_name_id
+        Case.objects.filter(id=case_id).delete()
+        url='/testapp/%d/case/'%(prd_id)
+        print(url)
+        return HttpResponseRedirect(url)
+    except Exception as e:
+        return HttpResponse('删除失败')
+
+def delete_article(request,article_id):
+    Article.objects.filter(id=article_id).delete()
+    return HttpResponse('删除成功')
 
 def change_prd(request,prd_id):
     if len(request.POST)==0:

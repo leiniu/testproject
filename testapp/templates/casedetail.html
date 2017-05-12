@@ -3,25 +3,17 @@
 <html lang="en-us" >
 <head>
 <title>用例 | 测试平台</title>
-<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
-<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
-
-<script type="text/javascript" src="/admin/jsi18n/"></script>
-<script type="text/javascript" src="/static/admin/js/core.js"></script>
-<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
-<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
-<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
-<script type="text/javascript" src="/static/admin/js/actions.js"></script>
-<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
-<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
-<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/forms.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/jquery-confirm.css" />
+        <script src="/static/js/jquery/jquery-3.2.1.js"></script>
+    <script src="/static/js/jquery/jquery-confirm.js"></script>
+    <script src="/static/js/my/myfunction.js"></script>
 <script type="text/javascript" src="/static/js/editor/kindeditor/kindeditor-all.js"></script>
 <script type="text/javascript" src="/static/js/editor/kindeditor/lang.zh_CN.js"></script>
 <script type="text/javascript" src="/static/js/editor/kindeditor/config.js"></script>
-
 <meta name="robots" content="NONE,NOARCHIVE" />
 </head>
-
 <body class=" app-testapp model-case change-form"
   data-admin-utc-offset="0">
 <!-- Container -->
@@ -30,7 +22,7 @@
     <div id="header">
         <div id="branding">
 
-<h1 id="site-name"><a href="/admin/">Django administration</a></h1>
+<h1 id="site-name"><a href="/index/">测试平台</a></h1>
         </div>
         <div id="user-tools">
                 Welcome,
@@ -54,7 +46,7 @@
         <div id="content-main">
 <br>
   <ul class="object-tools">
-    <li><a href="/testapp/prd/{{ id }}/case" class="viewsitelink">case列表</a></li>
+    <li><a href="/testapp/{{ id }}/case" class="viewsitelink">case列表</a></li>
   </ul>
 <div  id="case_form" >
   <fieldset class="module aligned ">
@@ -87,21 +79,21 @@
 
 </fieldset>
 </div>
-
 <div class="submit-row">
 <p class="default" ><a href="change">Change</a></p>
-    <p class="deletelink-box"><a href="/admin/testapp/case/40/delete/" class="deletelink">Delete</a></p>
+    <p class="deletelink-box"><a href="delete" class="deletelink">Delete</a></p>
 </div>
+<script>
+    var result={{ result|safe }}
+    if (result == true) {
+        alert("删除成功");
+        location.href('/testapp/{{ id }}/case')
+    }
+    else {
+        alert('删除失败')
+    }
 
-    <script type="text/javascript"
-            id="django-admin-form-add-constants"
-            src="/static/admin/js/change_form.js"
-            >
-    </script>
-<script type="text/javascript"
-        id="django-admin-prepopulated-fields-constants"
-        src="/static/admin/js/prepopulate_init.js"
-        data-prepopulated-fields="[]">
+
 </script>
 </div>
 </div></div>

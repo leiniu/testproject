@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from testapp.models import *
 from django.http import Http404
+import json
 
 def test(request):
     return render(request,'test.html')
@@ -12,6 +14,7 @@ def index(request):
 
 def login_html(request):
     return render(request,'login.html')
+'''
 def login(request):
     u = User.objects.filter(username=request.POST['username'])
     if len(u) == 0:
@@ -24,7 +27,32 @@ def login(request):
             return HttpResponse("You're logged in.")
         else:
             return HttpResponse("Your username and password didn't match.")
+'''
+def login_view(request):
+    if request.method == 'GET':
+        request.session['login_from'] = request.META.get('next', '/test/')
+        return render(request,'login.html')
+    elif request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request,user)
+                print(request.POST['next'])
+                #return HttpResponse('登陆成功')
+                return HttpResponseRedirect(request.session['login_from'])
+            else:
+                return HttpResponse('登陆失败')
+        else:
+            return HttpResponse('没有激活')
 
+def logout_view(request):
+    logout(request)
+
+def change_password(request):
+    return HttpResponse('修改成功')
+@login_required(login_url='/test/')
 def addcase(request):
     if len(request.POST) == 0:
         prd_lists=Prd.objects.all()
@@ -117,15 +145,16 @@ def delete_case(request,case_id):
     try:
         prd_id = Case.objects.filter(id=case_id)[0].prd_name_id
         Case.objects.filter(id=case_id).delete()
-        url='/testapp/%d/case/'%(prd_id)
-        print(url)
-        return HttpResponseRedirect(url)
+        return HttpResponse('删除失败')
     except Exception as e:
         return HttpResponse('删除失败')
 
 def delete_article(request,article_id):
-    Article.objects.filter(id=article_id).delete()
-    return HttpResponse('删除成功')
+    try:
+        Article.objects.filter(id=article_id).delete()
+        return JsonResponse('删除成功',safe=False)
+    except Exception as e:
+        return HttpResponse(json.dump('删除失败'))
 
 def change_prd(request,prd_id):
     if len(request.POST)==0:

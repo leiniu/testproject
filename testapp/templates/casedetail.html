@@ -85,9 +85,10 @@
 </div>
 <script>
     var result={{ result|safe }}
-    if (result == true) {
+    document.write(result);
+    if (result == 1) {
         alert("删除成功");
-        location.href('/testapp/{{ id }}/case')
+        #location.href('/testapp/{{ id }}/case')
     }
     else {
         alert('删除失败')

@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from testapp.models import *
 from django.http import Http404
+import json
 
 def test(request):
     return render(request,'test.html')
@@ -115,11 +116,10 @@ def change_case(request,case_id):
         return HttpResponse('更新成功')
 def delete_case(request,case_id):
     try:
-        prd_id = Case.objects.filter(id=case_id)[0].prd_name_id
+        #prd_id = Case.objects.filter(id=case_id)[0].prd_name_id
         Case.objects.filter(id=case_id).delete()
-        url='/testapp/%d/case/'%(prd_id)
-        print(url)
-        return HttpResponseRedirect(url)
+        result=1
+        return render(request, 'casedetail.html', {'result': json.dumps(result)})
     except Exception as e:
         return HttpResponse('删除失败')
 

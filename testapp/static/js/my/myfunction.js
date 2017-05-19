@@ -8,7 +8,16 @@ $(document).ready(function(){
 				'Yes'	: {
 					'class'	: 'blue',
 					'action': function(){
-					    location.href = this.$target.attr('href');
+					    //location.href = this.$target.attr('href');
+						$.get('delete',function (data) {
+							var msg = data.toString()
+							if(msg=='删除成功'){
+							alert(msg)
+								window.location.href='/testapp/article/all/'
+								//location.href=this.$target.attr('/testapp/article/all/');
+							}
+
+                        })
 					}
 				},
 				'No'	: {

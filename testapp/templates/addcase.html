@@ -4,15 +4,6 @@
 <title>Add 用例 | 测试平台</title>
 <link rel="stylesheet" type="text/css" href="/static/css/base.css" />
 <link rel="stylesheet" type="text/css" href="/static/css/forms.css" />
-<script type="text/javascript" src="/admin/jsi18n/"></script>
-<script type="text/javascript" src="/static/admin/js/core.js"></script>
-<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
-<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
-<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
-<script type="text/javascript" src="/static/admin/js/actions.js"></script>
-<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
-<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
-<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
 <script type="text/javascript" src="/static/js/editor/kindeditor/kindeditor-all.js"></script>
 <script type="text/javascript" src="/static/js/editor/kindeditor/lang.zh_CN.js"></script>
 <script type="text/javascript" src="/static/js/editor/kindeditor/config.js"></script>
@@ -26,19 +17,18 @@
     <div id="header">
         <div id="branding">
 
-<h1 id="site-name"><a href="/index/">测试平台</a></h1>
+<h1 id="site-name"><a href="/test/index/">测试平台</a></h1>
         </div>
         <div id="user-tools">
             Welcome,
-                <strong>admin</strong>.
-                <a href="/admin/logout/">Log out</a>
+                <strong>{{ request.session.username }}</strong>/
+                <a href="/test/logout/">Log out</a>
         </div>
     </div>
     <!-- END Header -->
 <div class="breadcrumbs">
-<a href="/admin/">Home</a>
-&rsaquo; <a href="/admin/testapp/">Testapp</a>
-&rsaquo; <a href="/admin/testapp/case/">测试用例</a>
+<a href="/test/index/">Home</a>
+&rsaquo; <a href="/test/case/">测试用例</a>
 &rsaquo; Add 用例
 </div>
     <!-- Content -->
@@ -50,25 +40,8 @@
   <fieldset class="module aligned ">
         <div class="form-row field-prd_name">
                 <div>
-                        <label class="required" for="id_prd_name">需求:</label>
-<div class="related-widget-wrapper">
-    <select id="id_prd_name" name="prd_name" required="required">
-<option value="" selected="selected">---------</option>
-{% for prd in prd_lists %}
-<option value={{prd.id}}>{{ prd.name }}</option>
-{% endfor %}
-</select>
-        <a class="related-widget-wrapper-link change-related" id="change_id_prd_name"
-            data-href-template="/admin/testapp/prd/__fk__/change/?_to_field=id&amp;_popup=1"
-            title="Change selected 需求名称">
-            <img src="/static/admin/img/icon-changelink.svg" alt="Change"/>
-        </a>
-        <a class="related-widget-wrapper-link add-related" id="add_id_prd_name"
-            href="/testapp/prd/add/?_to_field=id&amp;_popup=1"
-            title="Add another 需求名称">
-            <img src="/static/admin/img/icon-addlink.svg" alt="Add"/>
-        </a>
-</div>
+                    <label class="required" for="id_prd_name">需求:</label>
+                    {{ name }}
                 </div>
         </div>
         <div class="form-row field-module">

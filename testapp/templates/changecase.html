@@ -1,24 +1,12 @@
 <!DOCTYPE html>
-
 <html lang="en-us" >
 <head>
 <title>Change 用例 | 测试平台</title>
 <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
 <link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
-
-<script type="text/javascript" src="/admin/jsi18n/"></script>
-<script type="text/javascript" src="/static/admin/js/core.js"></script>
-<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
-<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
-<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
-<script type="text/javascript" src="/static/admin/js/actions.js"></script>
-<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
-<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
-<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
 <script type="text/javascript" src="/static/js/editor/kindeditor/kindeditor-all.js"></script>
-<script type="text/javascript" src="/static/js/editor/kindeditor/lang.zh_CN.js"></script>
+<script type="text/javascript" src="/static/js/editor/kindeditor/lang/zh_CN.js"></script>
 <script type="text/javascript" src="/static/js/editor/kindeditor/config.js"></script>
-
 <meta name="robots" content="NONE,NOARCHIVE" />
 </head>
 
@@ -30,22 +18,19 @@
     <div id="header">
         <div id="branding">
 
-<h1 id="site-name"><a href="/admin/">Django administration</a></h1>
+<h1 id="site-name"><a href="/test/index/">测试平台</a></h1>
         </div>
         <div id="user-tools">
                 Welcome,
-                <strong>admin</strong>.
-                    <a href="/">View site</a> /
-                <a href="/admin/password_change/">Change password</a> /
+                <strong>{{ request.session.username }}</strong>.
 
-                <a href="/admin/logout/">Log out</a>
+                <a href="/test/logout/">Log out</a>
         </div>
     </div>
     <!-- END Header -->
 
 <div class="breadcrumbs">
-<a href="/admin/">Home</a>
-&rsaquo; <a href="/admin/testapp/">Testapp</a>
+<a href="/test/index/">Home</a>
 &rsaquo; <a href="/admin/testapp/case/">测试用例</a>
 &rsaquo; {{ case.title }}
 </div>
@@ -54,15 +39,6 @@
 
         <h1>Change 用例</h1>
         <div id="content-main">
-
-  <ul class="object-tools">
-
-    <li>
-        <a href="/admin/testapp/case/40/history/" class="historylink">History</a>
-    </li>
-    <li><a href="/admin/r/9/40/" class="viewsitelink">View on site</a></li>
-
-  </ul>
 <form enctype="multipart/form-data" action="" method="post" id="case_form" novalidate>{% csrf_token %}
 <div>
   <fieldset class="module aligned ">
@@ -77,55 +53,27 @@
         </div>
         <div class="form-row field-module">
                 <div>
-
                         <label class="required" for="id_module">模块:</label>
-
                             <input class="vTextField" id="id_module" maxlength="256" name="module" type="text" value={{ case.module }} required />
                 </div>
-
         </div>
-
         <div class="form-row field-title">
-
                 <div>
-
                         <label class="required" for="id_title">标题:</label>
-
                             <input class="vTextField" id="id_title" maxlength="256" name="title" type="text" value={{ case.title }} required />
-
                 </div>
-
         </div>
-
         <div class="form-row field-content">
-
                 <div>
-
                         <label for="id_content">内容:</label>
-
                             <textarea class="vLargeTextField" cols="40" id="id_content" name="content" rows="10">{{ case.content }}</textarea>
-
                 </div>
-
         </div>
-
 </fieldset>
 <div class="submit-row">
 <input type="submit" value="Save" class="default" name="_save" />
-    <p class="deletelink-box"><a href="/admin/testapp/case/40/delete/" class="deletelink">Delete</a></p>
-<input type="submit" value="Save and add another" name="_addanother" />
-<input type="submit" value="Save and continue editing" name="_continue" />
+<!--<p class="deletelink-box"><input type="reset" value="Reset"/></p>-->
 </div>
-    <script type="text/javascript"
-            id="django-admin-form-add-constants"
-            src="/static/admin/js/change_form.js"
-            >
-    </script>
-<script type="text/javascript"
-        id="django-admin-prepopulated-fields-constants"
-        src="/static/admin/js/prepopulate_init.js"
-        data-prepopulated-fields="[]">
-</script>
 </div>
 </form></div>
         <br class="clear" />

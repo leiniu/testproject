@@ -4,8 +4,7 @@ create some records for demo database
 
 from testproject.wsgi import *
 from testapp.models import Case,Prd
-
-
+'''
 def main():
     prd_urls = [
         ('银联二维码', '123456'),
@@ -23,7 +22,7 @@ def main():
             c = Case.objects.get_or_create(prd_name=p,module=x, title='{}_{}_{}'.format(x,'用例',i),content='思考大幅减少旅客谨防三大框架富士康')[0]
             print(2)
             #c.prd_name.add(p)
-
+'''
 
 
 

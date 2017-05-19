@@ -1,2 +1,82 @@
-<body><div style="background:red;float:left;width:50%">hhhh</div>
-<div style="background:blue;float:left;width:50%">ddddd</div></body>
+<head>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div><h>扫码通道上线验收步骤</h></div>
+<div style="float:left;width:50%">
+
+        <div>
+            <h>名称释义：</h><br>
+            <p>APP主扫：商务版扫码功能扫描微信/支付宝付款二维码</p>
+            <p>APP被扫：微信/支付宝扫描商务版中的二维码</p>
+            <p>回调log：</p><p>系统确认是否交易成功有两种途径</p>
+            <p>一是银行返回的交易结果信息；二是没有收到银行返回的信息，系统不断去请求获取信息</p>
+            <p>第二种方式同步较慢，所以需要让开发查看是否有回调。</p>
+            <p>通道到账：不管是T1还是T0交易，通道到账到时T1。通道是否到账需要让财务确认。</p>
+            <p>通道号：每个通道都有一个通道ID，请和开发确认通道ID，以便确认所走通道是否正确。</p>
+        </div>
+    <table border="1">
+    <tr>
+        <td>步骤</td><td>操作入口</td><td>内容</td><td>预期结果</td>
+    </tr>
+    <tr>
+        <td>1</td><td>APP主扫</td><td>T1支付，密码正确</td><td>消费成功，通道T1到账，商户资金T1到账，查询回调log（开发完成）</td>
+    </tr>
+        <tr>
+        <td>2</td><td>APP主扫大额</td><td>T1支付，密码错误</td><td>消费失败，不扣款</td>
+        </tr>
+        <tr>
+            <td>3</td><td>APP被扫</td><td>T0支付，密码正确</td><td>消费成功，通道T1到账，商户T0到账</td>
+        </tr>
+        <tr>
+        <td>4</td><td>固定二维码</td><td>T0支付，密码正确</td><td>消费成功，通道T1到账，商户T0到账</td>
+        </tr>
+        <tr>
+        <td>5</td><td>乐刷商务版公众号</td><td>T0支付，密码正确</td><td>消费成功，通道T1到账，商户T0到账</td>
+        </tr>
+        <tr>
+        <td>6</td><td>APP被扫</td><td>T1支付，密码错误</td><td>密码错误</td>
+        </tr>
+        <tr>
+        <td>7</td><td>固定二维码</td><td>T0支付，密码错误</td><td>密码错误</td>
+        </tr>
+        <tr>
+        <td>8</td><td>APP/收款二维码</td><td>T0支付，密码错误</td><td>密码错误</td>
+        </tr>
+        <tr>
+        <td>9</td><td>POS被扫</td><td>T1支付，密码正确</td><td>消费成功，通道T1到账，商户T1到账</td>
+        </tr>
+        <tr>
+        <td>10</td><td>POS被扫</td><td>T1支付，密码错误</td><td>密码错误，交易失败</td>
+        </tr>
+        </table>
+<div>
+        <label>通道费率：</label><input type="text" name="rate"/><br>
+        <label>商户号：</label><input type="text" name="rate"/><button>点击查询商户费率</button>
+    </div>
+    <div>
+        <table border="1">
+            <tr>
+                <td></td><td>T1</td><td>T0</td>
+            </tr>
+            <tr>
+                <td>微信</td><td></td><td></td>
+            </tr>
+            <tr>
+                <td>支付宝</td><td></td><td></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <form action="" method="post">
+            <label>商户号：</label><input type="text" name="mid"/>
+            <label>开始时间：</label><input type="text" name="dts"/>
+            <label>结束时间：</label><input type="text" name="dte"/>
+        </form>
+    </div>
+</div>
+
+<div style="background:blue;float:left;width:50%">
+    ddddd
+</div>
+</body>

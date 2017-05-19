@@ -3,15 +3,10 @@
 <head>
 <meta charset="utf-8">
 <title>测试平台</title>
-    <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
-    <link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
-    <style type="text/css">
-        .hh
-        {
-            margin:0 auto;
+    <link rel="stylesheet" type="text/css" href="/static/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/forms.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/mystyle.css" />
 
-        }
-    </style>
 </head>
 
 <body>
@@ -20,18 +15,22 @@
         <h1 id="site-name"><a href="/index/">测试平台</a></h1>
     </div>
     <div id="user-tools">
-        Welcome,<strong>admin</strong>.
-                <a href="/admin/logout/">Log out</a>
+        Welcome,<strong>{{ request.session.username }}</strong>.
+                <a href="/test/logout/">Log out</a>
     </div>
 </div>
-<div >
+<div id="index">
+    <div id="search">
     <form action="/testapp/search" method="post">
-        <input type="text" value="输入搜索关键字..." name="keyword">
-        <input type="submit" value="搜索">
+        <input id="kw" type="text" value="输入搜索关键字..." name="keyword">
+        <input id="sw" type="submit" value="搜索">
     </form>
-    <a href="/testapp/prd">用例管理</a>
-    <a href="/testapp/article/all">分享文章</a>
+    </div>
+    <div id="link1">
+    <a href="/test/prd">用例管理</a>
+    <a href="/test/article/all">分享文章</a>
     <p></p>
+    </div>
 </div>
 
 </body>

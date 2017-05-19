@@ -4,7 +4,6 @@
 <title>Change 文章 | 测试平台</title>
 <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
 <link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
-
 <script type="text/javascript" src="/static/js/editor/kindeditor/kindeditor-all.js"></script>
 <script type="text/javascript" src="/static/js/editor/kindeditor/lang.zh_CN.js"></script>
 <script type="text/javascript" src="/static/js/editor/kindeditor/config.js"></script>
@@ -21,18 +20,16 @@
         </div>
         <div id="user-tools">
                 Welcome,
-                <strong>admin</strong>.
+                <strong>{{ request.session.username }}</strong>.
                     <a href="/">View site</a> /
                 <a href="/admin/password_change/">Change password</a> /
-
-                <a href="/admin/logout/">Log out</a>
+                <a href="/test/logout/">Log out</a>
         </div>
     </div>
     <!-- END Header -->
 <div class="breadcrumbs">
-<a href="/admin/">Home</a>
-&rsaquo; <a href="/admin/testapp/">Testapp</a>
-&rsaquo; <a href="/admin/testapp/article/">文章</a>
+<a href="/test/index/">Home</a>
+&rsaquo; <a href="/test/article/">文章</a>
 &rsaquo; {{ article.title }}
 </div>
     <!-- Content -->
@@ -70,22 +67,9 @@
 </fieldset>
 <div class="submit-row">
 <input type="submit" value="Save" class="default" name="_save" />
-    <p class="deletelink-box"><a href="/admin/testapp/article/2/delete/" class="deletelink">Delete</a></p>
-<input type="submit" value="Save and add another" name="_addanother" />
-<input type="submit" value="Save and continue editing" name="_continue" />
+ <!--<p class="deletelink-box"><input type="reset" value="Reset"/></p>-->
 </div>
 
-    <script type="text/javascript"
-            id="django-admin-form-add-constants"
-            src="/static/admin/js/change_form.js"
-            >
-    </script>
-
-<script type="text/javascript"
-        id="django-admin-prepopulated-fields-constants"
-        src="/static/admin/js/prepopulate_init.js"
-        data-prepopulated-fields="[]">
-</script>
 </div>
 </form></div>
         <br class="clear" />

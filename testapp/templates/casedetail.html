@@ -6,11 +6,11 @@
 <link rel="stylesheet" type="text/css" href="/static/css/base.css" />
 <link rel="stylesheet" type="text/css" href="/static/css/forms.css" />
 <link rel="stylesheet" type="text/css" href="/static/css/jquery-confirm.css" />
-        <script src="/static/js/jquery/jquery-3.2.1.js"></script>
+<script src="/static/js/jquery/jquery-3.2.1.js"></script>
     <script src="/static/js/jquery/jquery-confirm.js"></script>
-    <script src="/static/js/my/myfunction.js"></script>
+  <!--  <script src="/static/js/my/myfunction.js"></script>  -->
 <script type="text/javascript" src="/static/js/editor/kindeditor/kindeditor-all.js"></script>
-<script type="text/javascript" src="/static/js/editor/kindeditor/lang.zh_CN.js"></script>
+<script type="text/javascript" src="/static/js/editor/kindeditor/lang/zh_CN.js"></script>
 <script type="text/javascript" src="/static/js/editor/kindeditor/config.js"></script>
 <meta name="robots" content="NONE,NOARCHIVE" />
 </head>
@@ -26,16 +26,15 @@
         </div>
         <div id="user-tools">
                 Welcome,
-                <strong>admin</strong>.
-                <a href="/admin/logout/">Log out</a>
+                <strong>{{ request.session.username }}</strong>.
+                <a href="/test/logout/">Log out</a>
         </div>
     </div>
     <!-- END Header -->
 
 <div class="breadcrumbs">
-<a href="/admin/">Home</a>
-&rsaquo; <a href="/admin/testapp/">Testapp</a>
-&rsaquo; <a href="/admin/testapp/case/">测试用例</a>
+<a href="/index/">Home</a>
+&rsaquo; <a href="/test/case/">测试用例</a>
 &rsaquo; {{ case.title }}
 </div>
     <!-- Content -->
@@ -46,7 +45,7 @@
         <div id="content-main">
 <br>
   <ul class="object-tools">
-    <li><a href="/testapp/{{ id }}/case" class="viewsitelink">case列表</a></li>
+    <li><a href="/test/{{ id }}/case" class="viewsitelink">case列表</a></li>
   </ul>
 <div  id="case_form" >
   <fieldset class="module aligned ">
@@ -88,12 +87,11 @@
     document.write(result);
     if (result == 1) {
         alert("删除成功");
-        #location.href('/testapp/{{ id }}/case')
+        #location.href('/test/{{ id }}/case')
     }
     else {
         alert('删除失败')
     }
-
 
 </script>
 </div>

@@ -30,6 +30,5 @@ class ArticleAdmin(admin.ModelAdmin):
         )
 admin.site.register(Case,CaseAdmin)
 admin.site.register(Prd,PrdAdmin)
-admin.site.register(User,UserAdmin)
 admin.site.register(Article,ArticleAdmin)
 

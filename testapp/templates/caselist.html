@@ -5,15 +5,6 @@
 <title>用例列表 | 测试平台</title>
 <link rel="stylesheet" type="text/css" href="/static/css/base.css" />
   <link rel="stylesheet" type="text/css" href="/static/css/changelists.css" />
-    <script type="text/javascript" src="/admin/jsi18n/"></script>
-<script type="text/javascript" src="/static/admin/js/core.js"></script>
-<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
-<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
-<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
-<script type="text/javascript" src="/static/admin/js/actions.js"></script>
-<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
-<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
-<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
 <script type="text/javascript" src="/static/js/editor/kindeditor/kindeditor-all.js"></script>
 <script type="text/javascript" src="/static/js/editor/kindeditor/lang.zh_CN.js"></script>
 <script type="text/javascript" src="/static/js/editor/kindeditor/config.js"></script>
@@ -33,15 +24,14 @@
         </div>
         <div id="user-tools">
                 Welcome,
-                <strong>admin</strong>.
-                <a href="/admin/logout/">Log out</a>
+                <strong>{{ request.session.username }}</strong>.
+                <a href="/test/logout/">Log out</a>
         </div>
     </div>
     <!-- END Header -->
 
 <div class="breadcrumbs">
-<a href="/admin/">Home</a>
-&rsaquo; <a href="/admin/testapp/">Testapp</a>
+<a href="/index/">Home</a>
 &rsaquo; 测试用例
 </div>
     <!-- Content -->
@@ -53,7 +43,7 @@
 
         <ul class="object-tools">
             <li>
-              <a href="/testapp/case/add/" class="addlink">
+              <a href="{% url 'add_case'  prd_id %}" class="addlink">
                 Add 用例
               </a>
             </li>

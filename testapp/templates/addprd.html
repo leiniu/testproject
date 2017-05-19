@@ -5,15 +5,6 @@
 <title>Add 需求 | 测试平台</title>
 <link rel="stylesheet" type="text/css" href="/static/css/base.css" />
 <link rel="stylesheet" type="text/css" href="/static/css/forms.css" />
-<script type="text/javascript" src="/admin/jsi18n/"></script>
-<script type="text/javascript" src="/static/admin/js/core.js"></script>
-<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
-<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
-<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
-<script type="text/javascript" src="/static/admin/js/actions.js"></script>
-<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
-<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
-<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
 <meta name="robots" content="NONE,NOARCHIVE" />
 </head>
 
@@ -32,25 +23,22 @@
 
         <div id="user-tools">
             Welcome,
-                <strong>admin</strong>.
-                <a href="/admin/logout/">Log out</a>
+                <strong>{{ requests.session.username }}</strong>.
+                <a href="/test/logout/">Log out</a>
         </div>
 
     </div>
     <!-- END Header -->
 
 <div class="breadcrumbs">
-<a href="/admin/">Home</a>
-&rsaquo; <a href="/admin/testapp/">Testapp</a>
-&rsaquo; <a href="/admin/testapp/prd/">需求名称</a>
+<a href="/index/">Home</a>
+&rsaquo; <a href="/test/prd/">需求名称</a>
 &rsaquo; Add 需求名称
 </div>
   <!-- Content -->
     <div id="content" class="colM">
-
         <h1>Add 需求名称</h1>
         <div id="content-main">
-
 <form enctype="multipart/form-data" action="" method="post" id="prd_form" novalidate>{% csrf_token %}
 <div>
 

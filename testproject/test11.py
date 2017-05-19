@@ -1,8 +1,19 @@
 #! /usr/bin/env python
 #coding=utf-8
-from .testapp.models import Case
-dict=Case.objects.filter(prd_name_id=1).order_by(id)
+import os
+BASE_DIR=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print(BASE_DIR)
 
-for d in dict:
-    print(dict.title)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+print(MEDIA_ROOT)
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+print (STATIC_ROOT)
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'media'),
+)
+print(STATICFILES_DIRS)

@@ -3,6 +3,7 @@ KindEditor.ready(function (K) {
 editor = K.create('textarea[name="content"]', {
     width:'800px',
     height:'400px',
+    uploadJson:'/test/upload/',
 filterMode: true,//是否开启过滤模式
 htmlTags : {
 font : ['id', 'class', 'color', 'size', 'face', '.background-color'],

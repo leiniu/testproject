@@ -264,6 +264,10 @@ body.popup .submit-row {
     float: left;
     margin: 0;
 }
+p.test{
+    float:right;
+    margin:0;
+}
 
 .submit-row a.deletelink {
     display: block;

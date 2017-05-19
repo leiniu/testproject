@@ -2,19 +2,11 @@
 <html lang="en-us" >
 <head>
 <title>Add 文章 | 测试平台</title>
-<link rel="stylesheet" type="text/css" href="/static/css/base.css" />
+    {% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
 <link rel="stylesheet" type="text/css" href="/static/css/forms.css" />
-<script type="text/javascript" src="/admin/jsi18n/"></script>
-<script type="text/javascript" src="/static/admin/js/core.js"></script>
-<script type="text/javascript" src="/static/admin/js/vendor/jquery/jquery.js"></script>
-<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
-<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
-<script type="text/javascript" src="/static/admin/js/actions.js"></script>
-<script type="text/javascript" src="/static/admin/js/urlify.js"></script>
-<script type="text/javascript" src="/static/admin/js/prepopulate.js"></script>
-<script type="text/javascript" src="/static/admin/js/vendor/xregexp/xregexp.js"></script>
 <script type="text/javascript" src="/static/js/editor/kindeditor/kindeditor-all.js"></script>
-<script type="text/javascript" src="/static/js/editor/kindeditor/lang.zh_CN.js"></script>
+<script type="text/javascript" src="/static/js/editor/kindeditor/lang/zh_CN.js"></script>
 <script type="text/javascript" src="/static/js/editor/kindeditor/config.js"></script>
 <meta name="robots" content="NONE,NOARCHIVE" />
 </head>
@@ -25,20 +17,18 @@
     <!-- Header -->
     <div id="header">
         <div id="branding">
-<h1 id="site-name"><a href="/index/">测试平台</a></h1>
+<h1 id="site-name"><a href="{% url 'index' %}">测试平台</a></h1>
         </div>
         <div id="user-tools">
                 Welcome,
-                <strong>admin</strong>.
-
-                <a href="/admin/logout/">Log out</a>
+                <strong>{{ request.session.username }}</strong>.
+                <a href="{% url 'logout' %}">Log out</a>
         </div>
     </div>
     <!-- END Header -->
 <div class="breadcrumbs">
-<a href="/index/">Home</a>
-&rsaquo; <a href="/admin/testapp/">Testapp</a>
-&rsaquo; <a href="/admin/testapp/article/">文章</a>
+<a href="{% url 'index' %}">Home</a>
+&rsaquo; <a href="{% url 'article_list' %}">文章</a>
 &rsaquo; {{ article.title }}
 </div>
     <!-- Content -->
@@ -72,18 +62,6 @@
 <p class="deletelink-box"><input type="reset" value="Reset"/></p>
 <input type="submit" value="Save and add another" name="_addanother" />
 </div>
-
-    <script type="text/javascript"
-            id="django-admin-form-add-constants"
-            src="/static/admin/js/change_form.js"
-            >
-    </script>
-
-<script type="text/javascript"
-        id="django-admin-prepopulated-fields-constants"
-        src="/static/admin/js/prepopulate_init.js"
-        data-prepopulated-fields="[]">
-</script>
 </div>
 </form></div>
         <br class="clear" />

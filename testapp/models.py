@@ -1,13 +1,16 @@
 from django.db import models
 from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
 
 # Create your models here.
+'''
 class User (models.Model):
     username=models.CharField('用户名',max_length=10)
     password=models.CharField('密码',max_length=20)
 
     def __str__(self):
         return self.username
+'''
 
 class Prd (models.Model):
     name = models.CharField('需求名称',max_length=256)
